@@ -13,9 +13,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-
-    <script type="text/javascript" src="js/file.js"></script>
-
+    <title>Coaching Institute</title>
     <!-- Website Font style -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     
