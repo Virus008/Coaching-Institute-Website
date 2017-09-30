@@ -67,12 +67,6 @@
 	}
 
 ?>
-	<!-- <script type="text/JavaScript">
-		function myFunction()
-		{
-			alert("Successfully signed up!!"); 
-		}
-	</script> -->
 
 <?php
 
@@ -132,7 +126,7 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-user"></i>
                         </span> 
-                        <input class="form-control" placeholder="Full Name" name="user_name" type="text">
+                        <input class="form-control" placeholder="Full Name" name="user_name" id="user_name" type="text">
                       </div><span class="Error"> <?php echo $FullnameErr; ?> </span>
                     </div>
                     
