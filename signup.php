@@ -1,82 +1,82 @@
 <?php
 	require 'dbconnect.php';
 
-	$FullnameErr = $GenderErr = $DobErr = $AddressErr = $EmailErr = $CourseErr = $MobilenoErr = $UsernameErr = $PasswordErr = ""; 
-	$Fullname = $Gender = $Dob = $Address = $Email = $Course = $Mobileno = $Username = $Password = "";
+// 	$FullnameErr = $GenderErr = $DobErr = $AddressErr = $EmailErr = $CourseErr = $MobilenoErr = $UsernameErr = $PasswordErr = ""; 
+// 	$Fullname = $Gender = $Dob = $Address = $Email = $Course = $Mobileno = $Username = $Password = "";
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST") 
-	{
-		if (empty($_POST["user_name"]))
-		{
-			$FullnameErr = "Name is reqired";
-		}
-		else
-		{
-			$Fullname = test_input($_POST["user_name"]);
-			if (!preg_match("/^[a-zA-Z]*$",$Fullname))
-			{
-				$FullnameErr = "Only letters and white space is allowed";		
-			}			
-		}
-
-
-		if (empty($_POST["user_email"]))
-		{
-			$EmailErr = "Email is required";	
-		}
-		else
-		{
-			$Email = test_input($_POST["user_email"]);
-			if (!filter_var($Email, FILTER_VALIDATE_EMAIL))
-			{
-			 	$EmailErr = "Invalid Email format";
-			} 
-		}
+// 	if ($_SERVER["REQUEST_METHOD"] == "POST") 
+// 	{
+// 		if (empty($_POST["user_name"]))
+// 		{
+// 			$FullnameErr = "Name is reqired";
+// 		}
+// 		else
+// 		{
+// 			$Fullname = test_input($_POST["user_name"]);
+// 			if (!preg_match("/^[a-zA-Z]*$",$Fullname))
+// 			{
+// 				$FullnameErr = "Only letters and white space is allowed";		
+// 			}			
+// 		}
 
 
-    if (empty($_POST["user_mobileno"]))
-    {
-      $MobilenoErr = "Number is required";
-    }
-    else
-    {
-      $Mobileno = test_input($_POST["user_mobileno"]);
-      if (!is_numeric($Mobileno))
-      {
-        $MobilenoErr = "Numeric value is required";
-      }
-
-    }
-
-
-		/*$Fullname = test_input($_POST["user_name"]);*/
-		$Gender = test_input($_POST["user_gender"]);
-		$Dob = test_input($_POST["user_dob"]);
-		$Address = test_input($_POST["user_address"]);
-		/*$Email = test_input($_POST["user_email"]);*/
-		$Course = test_input($_POST["user_coursename"]);
-		/*$Mobileno = test_input($_POST["user_mobileno"]);*/
-		$Username = test_input($_POST["username"]);
-		$Password = test_input($_POST["password"]);
+// 		if (empty($_POST["user_email"]))
+// 		{
+// 			$EmailErr = "Email is required";	
+// 		}
+// 		else
+// 		{
+// 			$Email = test_input($_POST["user_email"]);
+// 			if (!filter_var($Email, FILTER_VALIDATE_EMAIL))
+// 			{
+// 			 	$EmailErr = "Invalid Email format";
+// 			} 
+// 		}
 
 
-		$sql = $conn->query("INSERT INTO user_info (user_name,user_gender,user_dob,user_address,user_email,user_coursename,user_mobileno,username,password) VALUES ('{$Fullname}','{$Gender}','{$Dob}', '{$Address}','{$Email}','{$Course}','{$Mobileno}','{$Username}','{$Password}')");
+//     if (empty($_POST["user_mobileno"]))
+//     {
+//       $MobilenoErr = "Number is required";
+//     }
+//     else
+//     {
+//       $Mobileno = test_input($_POST["user_mobileno"]);
+//       if (!is_numeric($Mobileno))
+//       {
+//         $MobilenoErr = "Numeric value is required";
+//       }
+
+//     }
 
 
-		/*echo "successfully signed up!!";*/
-	}
+// 		/*$Fullname = test_input($_POST["user_name"]);*/
+// 		$Gender = test_input($_POST["user_gender"]);
+// 		$Dob = test_input($_POST["user_dob"]);
+// 		$Address = test_input($_POST["user_address"]);
+// 		/*$Email = test_input($_POST["user_email"]);*/
+// 		$Course = test_input($_POST["user_coursename"]);
+// 		/*$Mobileno = test_input($_POST["user_mobileno"]);*/
+// 		$Username = test_input($_POST["username"]);
+// 		$Password = test_input($_POST["password"]);
 
-?>
 
-<?php
+// 		$sql = $conn->query("INSERT INTO user_info (user_name,user_gender,user_dob,user_address,user_email,user_coursename,user_mobileno,username,password) VALUES ('{$Fullname}','{$Gender}','{$Dob}', '{$Address}','{$Email}','{$Course}','{$Mobileno}','{$Username}','{$Password}')");
 
-	function test_input($data)
-	{
-		$data = trim($data);
-		$data = stripcslashes($data);
-		$data = htmlspecialchars($data);
-		return $data;
-	}
+
+// 		/*echo "successfully signed up!!";*/
+// 	}
+
+// ?>
+
+// <?php
+
+// 	function test_input($data)
+// 	{
+// 		$data = trim($data);
+// 		$data = stripcslashes($data);
+// 		$data = htmlspecialchars($data);
+// 		return $data;
+// 	}
 
 	/*if(isset($_POST['submit'])){
 		$Fullname = $_POST['user_name'];
@@ -103,139 +103,170 @@
   include("header.php");
 ?>
 
-    <div class="container text-center">
-      <div class="row text-center">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <strong><font size="4"> Sign Up</strong></font>
-          </div>
+    
+    <div class="continer" id="Signup">
+    	<div class="row">
+    		<div class="col-md-6">
+    			<form action="" method="POST" id="fileForm" role="form">
+    			<fieldset>
+    				<legend class="text-center">
+    					Valid Information Is Required To Register.<span class="req"> <small>* reqiured</small></span>
+    				</legend>
 
-          <div class="panel-body">
-            <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-              <fieldset>
-                <div class="row">
-                  <div class="center-block">
-                    <img class="profile-img" src="images/login.png" alt="">
-                  </div>
-                </div><br>
+    				<div class="form-group">
+    					<label for="firstname"><span class="req">* </span> First name: </label>
+    					<input class="form-control" type="text" name="firstname" id="txt" onkeyup="validate(this)" required />
+    					<div id="errFirst"></div>
+    				</div>
 
-                <div class="row">
-                  <div class="col-sm-12 col-md-9  col-md-offset-1 ">
-                    <div class="form-group ">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-user"></i>
-                        </span> 
-                        <input class="form-control" placeholder="Full Name" name="user_name" id="user_name" type="text">
-                      </div><span class="Error"> <?php echo $FullnameErr; ?> </span>
-                    </div>
-                    
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-user"></i>
-                        </span> 
-                        <input class="form-control" placeholder="Gender" name="user_gender" type="text">
-                      </div>
-                    </div>
+    				<div class="form-group">
+    					<label for="lastname"><span class="req">* </span> Last name: </label>
+    					<input class="form-control" type="text" name="lastname" id="txt" onkeyup="validate(this)" required />
+    					<div id="errLast"></div>
+    				</div>
 
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-user"></i>
-                        </span> 
-                        <input class="form-control" placeholder="Date Of Birth" name="user_dob" type="text">
-                      </div>
-                    </div>
 
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-home"></i>
-                        </span> 
-                        <input class="form-control" placeholder="Local Address" name="user_address" type="text">
-                      </div>
-                    </div>
+    				<div class="form-group">
+    					<label for="dateofbirth"><span class="req">* </span> Date of Birth: </label>
+    					<input class="form-control" type="text" name="dob" id="dob" onkeyup="dob_validate(this)" required />
+    					<div class="statusdob" id="statusdob"></div>
+    				</div>
 
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-envelope"></i>
-                        </span> 
-                        <input class="form-control" placeholder="@gmail.com" name="user_email" type="text">
-                      </div><span class="Error"> <?php echo $EmailErr; ?> </span>
-                    </div>                    
 
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-earphone"></i>
-                        </span> 
-                        <input class="form-control" placeholder="Mobile No." name="user_mobileno" type="text">
-                      </div><span class="Error"> <?php echo $MobilenoErr; ?> </span>
-                    </div>
+    				<div class="form-group">
+    					<label for="email"><span class="req">* </span> Email: </label>
+    					<input class="form-control" type="text" name="email" id="email" onchange="email_validate(this.value)" />
+    					<div class="status" id="status"></div>
+    				</div>
 
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-search"></i>
-                        </span> 
-                        <input class="form-control" placeholder="Enter Course" name="user_coursename" type="text">
-                      </div>
-                    </div>
+    				<div class="form-group">
+    					<label for="mobileno"><span class="req">* </span> Mobile No.: </label>
+    					<input class="form-control" type="text" name="mobileno" id="mobile" onkeyup="validatemobile(this)" />
+    					<div id="errmobileno"></div>
+    				</div>
 
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-user"></i>
-                        </span> 
-                        <input class="form-control" placeholder="Username" name="username" type="text" required>
-                      </div>
-                    </div>
+    				<div class="form-group">
+    					<label for="coursename"><span class="req">* </span> Course name: </label>
+    					<input class="form-control" type="text" name="course" id="course" required />
+    					<div id="errcourse"></div>
+    				</div>
 
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-lock"></i>
-                        </span>
-                        <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
-                      </div>
-                    </div>
-                    
-                    <div class="form-group">
-                    	<p id="succ_msg">
-                      <button type="submit" name="submit" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#signupmodal" onclick="myFunction()">Sign Up</button></p>
-                      
-                      <!--<div id="signupmodal" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
+    				<div class="form-group">
+    					<label for="username"><span class="req">* </span> User name: </label>
+    					<input class="form-control" type="text" name="username" id="txt" onkeyup="validate(this)" placeholder="min 6 letters" required />
+    					<div id="errusername"></div>
+    				</div>
 
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              <h4 class="modal-title"><b>Message</b></h4>
-                            </div>
+    				<div class="form-group">
+    					<label for="password"><span class="req">* </span>Password: </label>
+    					<input required type="password" name="password" id="pass1" class="form-control inputpass" minlength="4" maxlength="16" />
+    				</div>
 
-                            <div class="modal-body">
-                              <p>You have successfully signed up!!!</p>
-                            </div>
+    				<div class="form-group">
+    					<label for="password"><span class="req">* </span>Confirm Password: </label>
+    					<input required type="password" name="password" id="pass2" class="form-control inputpass" minlength="4" maxlength="16" onkeyup="checkPass()" />
+    					<span id="ConfirmMessage" class="ConfirmMessage"></span>
+    				</div>
 
-                            <!--<div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
+    				<div class="form-group">
+		                <?php //$date_entered = date('m/d/Y H:i:s'); ?>
+		                <input type="hidden" value="<?php //echo $date_entered; ?>" name="dateregistered">
+		                <input type="hidden" value="0" name="activate" />
+		                <hr>
 
-                          </div>
-                        </div>
-                      </div>-->
-                    </div>
+		                <input type="checkbox" required name="terms" onchange="this.setCustomValidity(validity.valueMissing ? 'Please indicate that you accept the Terms and Conditions' : '');" id="field_terms">   <label for="terms">I agree with the <a href="#" title="You may read our terms and conditions by clicking on this link">terms and conditions</a> for Registration.</label><span class="req">* </span>
+	            	</div>
 
-                  </div>
-                </div>
-              </fieldset>
-            </form><!--Form closed-->
-        </div><!--Panel closed-->
-      </div> <!--row closed-->
-    </div> <!--continer closed-->
+	            	<div class="form-group">
+                		<input class="btn btn-success" type="submit" name="submit_reg" value="Register">
+            		</div>
+    			</fieldset>
+    			</form>
+
+    			<script type="text/javascript">
+    				document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
+    			</script>
+    		</div>
+    	</div>	
+    </div>
 
     <?php
       include("footer.php");
     ?>
+
+
+    <script type="text/javascript">
+
+    	function checkPass()
+    	{
+    		var pass1 = document.getElementById("pass1");
+    		var pass2 = document.getElementById("pass2");
+    		var message = document.getElementById("ConfirmMessage");
+
+    		var succ_color = "#66cc66";
+    		var fail_color = "#ff0000";
+
+    		if (pass1.value == pass2.value) {
+    			pass2.style.backgroundColor = succ_color;
+    			message.style.color = succ_color;
+    			message.innerHTML = "Password Matched";
+    		}
+    		else{
+    			pass2.value.backgroundColor = fail_color;
+    			message.style.color = fail_color;
+    			message.innerHTML = "Password do not match!";
+    		}
+    	}
+
+
+    	function validatemobile(mobile)
+    	{
+    		var maintainplus = '';
+    		var numval = mobile.value;
+    		if (numval.charAt(0) == '+')
+    		{
+    			var maintainplus = '';
+    		}
+    		curmobileevar = numval.replace(/[\\A-Za-z!"£$%^&\,*+_={};:'@#~,.Š\/<>?|`¬\]\[]/g,'');
+    		mobile.value = maintainplus + curmobileevar;
+    		var maintainplus = '';
+    		mobile.focus;
+    	}
+
+
+    	function validate(txt)
+    	{
+    		txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
+    	}
+
+
+    	function email_validate(email)
+    	{
+    		var regmail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+    		if (regmail.test(email) == false)
+    		{
+    			document.getElementById("status").innerHTML = "<span class='warning'>Email address is not valid yet.</span>";
+    		}
+    		else
+    		{
+    			document.getElementById("status").innerHTML = "<span class='valid'>You have entered valid Email address.</span>";
+    		}
+    	}
+
+
+    	function dob_validate(dob)
+		{
+			var regdob = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/;
+
+ 		   if(regdob.test(dob) == false)
+    		{
+    			document.getElementById("statusdob").innerHTML	= "<span class='warning'>DOB is only used to verify your age.</span>";
+    		}
+    		else
+    		{
+    		document.getElementById("statusdob").innerHTML	= "<span class='valid'>Thanks, you have entered a valid DOB!</span>";	
+    	}
+	
+    
+
+    </script>

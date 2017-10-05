@@ -80,8 +80,8 @@ h2,p {
 
 /*----------------- For Signup Page-----------------*/
 
-.panel {
-	/*text-align: center;*/
+/*.panel {
+	text-align: center;
 	width: 50%;
 	margin-left: 300px;
 	border: 1px solid grey;
@@ -97,9 +97,38 @@ h2,p {
 	margin: 0 auto 10px;
 	display: block;
 	border-radius: 20%;
+}*/
+
+#Signup {
+	padding-top: 80px;
+	padding-left: 60px;
+	padding-bottom: 60px;
 }
 
+fieldset {
+	border: thin solid #ccc;
+	border-radius: 4px;
+	padding: 20px;
+	padding-left: 40px;
+	background : #fbfbfb;
+}
 
+legend {
+	color: #678;
+}
+
+.form-control {
+	width: 95%;
+}
+
+label small {
+	color: #678;
+}
+
+span.req {
+	color: maroon;
+	font-size: 112%;
+}
 
 /* ---------------For Contact Page-----------------*/
 
