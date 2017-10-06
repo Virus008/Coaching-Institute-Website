@@ -1,72 +1,6 @@
 <?php
 	require 'dbconnect.php';
-
-// 	$FullnameErr = $GenderErr = $DobErr = $AddressErr = $EmailErr = $CourseErr = $MobilenoErr = $UsernameErr = $PasswordErr = ""; 
-// 	$Fullname = $Gender = $Dob = $Address = $Email = $Course = $Mobileno = $Username = $Password = "";
-
-// 	if ($_SERVER["REQUEST_METHOD"] == "POST") 
-// 	{
-// 		if (empty($_POST["user_name"]))
-// 		{
-// 			$FullnameErr = "Name is reqired";
-// 		}
-// 		else
-// 		{
-// 			$Fullname = test_input($_POST["user_name"]);
-// 			if (!preg_match("/^[a-zA-Z]*$",$Fullname))
-// 			{
-// 				$FullnameErr = "Only letters and white space is allowed";		
-// 			}			
-// 		}
-
-
-// 		if (empty($_POST["user_email"]))
-// 		{
-// 			$EmailErr = "Email is required";	
-// 		}
-// 		else
-// 		{
-// 			$Email = test_input($_POST["user_email"]);
-// 			if (!filter_var($Email, FILTER_VALIDATE_EMAIL))
-// 			{
-// 			 	$EmailErr = "Invalid Email format";
-// 			} 
-// 		}
-
-
-//     if (empty($_POST["user_mobileno"]))
-//     {
-//       $MobilenoErr = "Number is required";
-//     }
-//     else
-//     {
-//       $Mobileno = test_input($_POST["user_mobileno"]);
-//       if (!is_numeric($Mobileno))
-//       {
-//         $MobilenoErr = "Numeric value is required";
-//       }
-
-//     }
-
-
-// 		/*$Fullname = test_input($_POST["user_name"]);*/
-// 		$Gender = test_input($_POST["user_gender"]);
-// 		$Dob = test_input($_POST["user_dob"]);
-// 		$Address = test_input($_POST["user_address"]);
-// 		/*$Email = test_input($_POST["user_email"]);*/
-// 		$Course = test_input($_POST["user_coursename"]);
-// 		/*$Mobileno = test_input($_POST["user_mobileno"]);*/
-// 		$Username = test_input($_POST["username"]);
-// 		$Password = test_input($_POST["password"]);
-
-
-// 		$sql = $conn->query("INSERT INTO user_info (user_name,user_gender,user_dob,user_address,user_email,user_coursename,user_mobileno,username,password) VALUES ('{$Fullname}','{$Gender}','{$Dob}', '{$Address}','{$Email}','{$Course}','{$Mobileno}','{$Username}','{$Password}')");
-
-
-// 		/*echo "successfully signed up!!";*/
-// 	}
-
-// ?>
+?>
 
 // <?php
 
@@ -107,41 +41,65 @@
     <div class="continer" id="Signup">
     	<div class="row">
     		<div class="col-md-6">
-    			<form action="" method="POST" id="fileForm" role="form">
+    			<form action="signup.php" method="POST" id="fileForm" role="form">
     			<fieldset>
-    				<legend class="text-center">
-    					Valid Information Is Required To Register.<span class="req"> <small>* reqiured</small></span>
-    				</legend>
+
+    				<div class="panel-heading">
+            			<strong><font size="5"> Sign Up</strong></font>
+          			</div>
+
+    				<div class="row">
+    					<div class="center-block">
+    						<img class="profile-img" src="images/login.png">
+    					</div>
+    				</div>
 
     				<div class="form-group">
     					<label for="firstname"><span class="req">* </span> First name: </label>
-    					<input class="form-control" type="text" name="firstname" id="txt" onkeyup="validate(this)" required />
+    					<input class="form-control" type="text" name="user_firstname" id="txt" onkeyup="validate(this)" required />
     					<div id="errFirst"></div>
     				</div>
 
     				<div class="form-group">
     					<label for="lastname"><span class="req">* </span> Last name: </label>
-    					<input class="form-control" type="text" name="lastname" id="txt" onkeyup="validate(this)" required />
+    					<input class="form-control" type="text" name="user_lastname" id="txt" onkeyup="validate(this)" required />
     					<div id="errLast"></div>
     				</div>
 
 
     				<div class="form-group">
+    					<label for="gender"><span class="req">* </span>Gender:</label>
+    					<select type="gender" class="form-control" name="user_gender">
+    						<option value="select">Select</option>
+    						<option value="male">Male</option>
+    						<option value="female">Female</option>
+    					</select>
+    				</div>
+
+
+    				<div class="form-group">
     					<label for="email"><span class="req">* </span> Email: </label>
-    					<input class="form-control" type="text" name="email" id="email" onchange="email_validate(this.value)" />
+    					<input class="form-control" type="text" name="user_email" id="email" onchange="email_validate(this.value)" />
     					<div class="status" id="status"></div>
     				</div>
 
     				<div class="form-group">
     					<label for="mobileno"><span class="req">* </span> Mobile No.: </label>
-    					<input class="form-control" type="text" name="mobileno" id="mobile" />
+    					<input class="form-control" type="text" name="user_mobileno" id="mobile" />
     					<div id="errmobileno"></div>
     				</div>
 
     				<div class="form-group">
     					<label for="coursename"><span class="req">* </span> Course name: </label>
-    					<input class="form-control" type="text" name="course" id="course" required />
-    					<div id="errcourse"></div>
+    					<select type="text" class="form-control" name="user_coursename" required>
+    						<option value="select">Select</option>
+    						<option value="C">C</option>
+    						<option value="C++">C++</option>
+    						<option value="java">Java</option>
+    						<option value="php">PHP</option>
+    						<option value="python">Python</option>
+    						<option value="html">HTML</option>
+    					</select>
     				</div>
 
     				<div class="form-group">
@@ -157,7 +115,7 @@
 
     				<div class="form-group">
     					<label for="password"><span class="req">* </span>Confirm Password: </label>
-    					<input required type="password" name="password" id="pass2" class="form-control inputpass" minlength="4" maxlength="16" onkeyup="checkPass()" />
+    					<input required type="password" name="con_password" id="pass2" class="form-control inputpass" minlength="4" maxlength="16" onkeyup="checkPass()" />
     					<span id="ConfirmMessage" class="ConfirmMessage"></span>
     				</div>
 
@@ -171,7 +129,7 @@
 	            	</div>
 
 	            	<div class="form-group">
-                		<input class="btn btn-success" type="submit" name="submit_reg" value="Register">
+                		<input class="btn btn-primary" type="submit" name="submit_reg" value="Sign Up">
             		</div>
     			</fieldset>
     			</form>
@@ -226,11 +184,11 @@
 
 		    if(regmail.test(email) == false)
     		{
-    			document.getElementById("status").innerHTML = "<span class='warning'>Email address is not valid yet.</span>";
+    			document.getElementById("status").innerHTML = "<span class='warning'>Email-ID is not valid yet.</span>";
     		}
     		else
     		{
-    			document.getElementById("status").innerHTML	= "<span class='valid'>You have entered a valid Email address!</span>";	
+    			document.getElementById("status").innerHTML	= "<span class='valid'>You have entered a valid Email-ID!</span>";	
     		}
 		}
 
