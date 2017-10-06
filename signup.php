@@ -127,13 +127,6 @@
 
 
     				<div class="form-group">
-    					<label for="dateofbirth"><span class="req">* </span> Date of Birth: </label>
-    					<input class="form-control" type="text" name="dob" id="dob" onkeyup="dob_validate(this)" required />
-    					<div class="statusdob" id="statusdob"></div>
-    				</div>
-
-
-    				<div class="form-group">
     					<label for="email"><span class="req">* </span> Email: </label>
     					<input class="form-control" type="text" name="email" id="email" onchange="email_validate(this.value)" />
     					<div class="status" id="status"></div>
@@ -141,7 +134,7 @@
 
     				<div class="form-group">
     					<label for="mobileno"><span class="req">* </span> Mobile No.: </label>
-    					<input class="form-control" type="text" name="mobileno" id="mobile" onkeyup="validatemobile(this)" />
+    					<input class="form-control" type="text" name="mobileno" id="mobile" />
     					<div id="errmobileno"></div>
     				</div>
 
@@ -196,77 +189,50 @@
 
 
     <script type="text/javascript">
-
+    	
     	function checkPass()
     	{
-    		var pass1 = document.getElementById("pass1");
-    		var pass2 = document.getElementById("pass2");
-    		var message = document.getElementById("ConfirmMessage");
+    		var pass1 = document.getElementById('pass1');
+    		var pass2 = document.getElementById('pass2');
+    		var message = document.getElementById('ConfirmMessage');
 
     		var succ_color = "#66cc66";
-    		var fail_color = "#ff0000";
+    		var fail_color = "#ff6666";
 
-    		if (pass1.value == pass2.value) {
-    			pass2.style.backgroundColor = succ_color;
-    			message.style.color = succ_color;
-    			message.innerHTML = "Password Matched";
-    		}
-    		else{
-    			pass2.value.backgroundColor = fail_color;
-    			message.style.color = fail_color;
-    			message.innerHTML = "Password do not match!";
-    		}
-    	}
-
-
-    	function validatemobile(mobile)
-    	{
-    		var maintainplus = '';
-    		var numval = mobile.value;
-    		if (numval.charAt(0) == '+')
+    		if (pass1.value == pass2.value)
     		{
-    			var maintainplus = '';
+    			pass2.style.backgroundcolor = succ_color;
+    			message.style.color = succ_color;
+    			message.innerHTML = "Passwords Match";
     		}
-    		curmobileevar = numval.replace(/[\\A-Za-z!"£$%^&\,*+_={};:'@#~,.Š\/<>?|`¬\]\[]/g,'');
-    		mobile.value = maintainplus + curmobileevar;
-    		var maintainplus = '';
-    		mobile.focus;
+    		else
+    		{
+    			pass2.value.backgroundcolor = fail_color;
+    			message.style.color = fail_color;
+    			message.innerHTML = "Passwords do not match!";
+    		}
     	}
 
 
     	function validate(txt)
     	{
     		txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
-    	}
+		}
 
 
-    	function email_validate(email)
-    	{
-    		var regmail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
-    		if (regmail.test(email) == false)
+		function email_validate(email)
+		{
+			var regmail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+
+		    if(regmail.test(email) == false)
     		{
     			document.getElementById("status").innerHTML = "<span class='warning'>Email address is not valid yet.</span>";
     		}
     		else
     		{
-    			document.getElementById("status").innerHTML = "<span class='valid'>You have entered valid Email address.</span>";
+    			document.getElementById("status").innerHTML	= "<span class='valid'>You have entered a valid Email address!</span>";	
     		}
-    	}
+		}
 
-
-    	function dob_validate(dob)
-		{
-			var regdob = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/;
-
- 		   if(regdob.test(dob) == false)
-    		{
-    			document.getElementById("statusdob").innerHTML	= "<span class='warning'>DOB is only used to verify your age.</span>";
-    		}
-    		else
-    		{
-    		document.getElementById("statusdob").innerHTML	= "<span class='valid'>Thanks, you have entered a valid DOB!</span>";	
-    	}
-	
-    
 
     </script>
