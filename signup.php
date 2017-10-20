@@ -2,31 +2,31 @@
 	require 'dbconnect.php';
 ?>
 
-// <?php
+<?php
+	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		$Firstname = test_input($_POST["user_firstname"]);
+		$Lastname = test_input($_POST["user_lastname"]);
+		$Gender = test_input($_POST["user_gender"]);
+		$Email = test_input($_POST["user_email"]);
+		$Mobileno = test_input($_POST["user_mobileno"]);
+		$Course = test_input($_POST["user_coursename"]);
+		$Username = test_input($_POST["username"]);
+		$Password = test_input($_POST["password"]);
+		$Con_password = test_input($_POST["con_password"]);
+		$sql = $conn->query("INSERT INTO user_info (user_firstname,user_lastname,user_gender,user_email,user_mobileno,user_coursename,username,password,con_password) VALUES ('{$Firstname}','{$Lastname}','{$Gender}', '{$Email}','{$Mobileno}','{$Course}','{$Username}','{$Password}','{$Con_password}')");
 
-// 	function test_input($data)
-// 	{
-// 		$data = trim($data);
-// 		$data = stripcslashes($data);
-// 		$data = htmlspecialchars($data);
-// 		return $data;
-// 	}
-
-	/*if(isset($_POST['submit'])){
-		$Fullname = $_POST['user_name'];
-		$Gender = $_POST['user_gender'];
-		$Dob = $_POST['user_dob'];
-		$Address = $_POST['user_address'];
-		$Email = $_POST['user_email'];
-		$Course = $_POST['user_coursename'];
-		$Mobileno = $_POST['user_mobileno'];
-		$Username = $_POST['username'];
-		$Password = $_POST['password'];
-		$sql = $conn->query("INSERT INTO user_info (user_name,user_gender,user_dob,user_address,user_email,user_coursename,user_mobileno,username,password) VALUES ('{$Fullname}','{$Gender}','{$Dob}', '{$Address}','{$Email}','{$Course}','{$Mobileno}','{$Username}','{$Password}')");
-
+		echo "Successfully signed up!!";
 	}
+	
 
-	echo "Successfully signed up!!"; */
+	function test_input($data)
+	{
+		$data = trim($data);
+		$data = stripcslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	} 
 ?>
 
 
@@ -41,7 +41,7 @@
     <div class="continer" id="Signup">
     	<div class="row">
     		<div class="col-md-6">
-    			<form action="signup.php" method="POST" id="fileForm" role="form">
+    			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" id="fileForm" role="form">
     			<fieldset>
 
     				<div class="panel-heading">
@@ -129,7 +129,7 @@
 	            	</div>
 
 	            	<div class="form-group">
-                		<input class="btn btn-primary" type="submit" name="submit_reg" value="Sign Up">
+                		<input class="btn btn-primary" type="submit" name="submit" value="Sign Up">
             		</div>
     			</fieldset>
     			</form>

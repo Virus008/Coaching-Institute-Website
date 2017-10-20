@@ -129,7 +129,7 @@
     				
     				<div class="modal-footer">
     					<!--<a class="btn btn-danger" data-dismiss="modal">Close</a>-->
-    					<button type="submit" name="Login" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal">Log In</button>
+    					<button type="submit" name="Login" value="Login" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal">Log In</button>
     				</div>
 
                     <!--<div id="loginmodal" class="modal fade" role="dialog">
