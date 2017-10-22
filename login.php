@@ -1,38 +1,35 @@
-<!DOCTYPE html>
-<html>
-
-<?php
-	include("header.php");
-?>
-
-</html>
-
 <?php
 require 'dbconnect.php';
 session_start();
-	if (!empty($_POST["Login"]))
+
+if (isset($_POST['Login']))
+{
+	$Username = $_POST['username'];
+	$Password = $_POST['password'];
+		
+	$result = $conn->query("select * from user_info where username = '$Username' AND password='$Password'");
+	$row = $result->fetch_assoc();
+
+
+	$_SESSION['username'] = $row['username'];
+	$_SESSION['password'] = $row['password'];
+
+		
+
+	if (mysqli_num_rows($result) > 0)
 	{
-		$Username = $_POST['username'];
-		$Password = $_POST['password'];
-
-		$result = mysqli_query($conn, "SELECT * FROM user_info WHERE username = '$Username' AND password='$Password'");
-		$row  = mysqli_fetch_array($result);
-
-		if(is_array($row))
-		{
-			$_SESSION["username"] = $row['username'];
-		} 
-		else
-		{
-			$message = "Invalid Username or Password!";
-		}
+		$name=$row['username'];
+		$_SESSION['username']=$name;
+		header('Location:account.php');
 	}
-
-	if(!empty($_POST["logout"])) 
+	else
 	{
-		$_SESSION["username"] = "";
+		unset($_SESSION['username']);
 		session_destroy();
+		header('Location:home.php');
 	}
+}
+
 ?>
 
 

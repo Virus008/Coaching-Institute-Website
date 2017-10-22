@@ -62,7 +62,7 @@
 
     <div class="container">
     <?php
-      echo 'Welocme,'.$_SESSION['username']; 
+      echo 'Welocme, '.$_SESSION['username']; 
     ?>
     </div>
   

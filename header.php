@@ -75,7 +75,6 @@
             
                 echo '<li><a href="#login" data-toggle="modal">Log In</a></li>
                     <li><a href="signup.php">Sign Up</a></li>';
-                //echo '</ul>';
             
             }
             ?>  
@@ -84,18 +83,6 @@
     </div>
 
 	
-
-
-<!-- ================Fixed Footer============== -->
-    <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-        <div class="navbar-text pull-left">
-        	<p>www.learnandearn@gmail.com</p>
-        </div> 
-    </div>
-
-    <!-- Bootstrap core Javascript
-    =========================================== -->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
     <div class="modal fade text-center" id="login" role="dialog">
     	<div class="modal-dialog">
@@ -128,33 +115,13 @@
     				</div>
     				
     				<div class="modal-footer">
-    					<!--<a class="btn btn-danger" data-dismiss="modal">Close</a>-->
     					<button type="submit" name="Login" value="Login" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal">Log In</button>
     				</div>
 
-                    <!--<div id="loginmodal" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-
-                                <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                  <h4 class="modal-title"><b>Message</b></h4>
-                                </div>
-
-                                <div class="modal-body">
-                                  <p>Invalid Credentials!!!</p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>-->
 
     			</form>
     		</div>
     	</div>
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- <script src="js/jquery.min.js"></script> -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- <script src="js/bootstrap.min.js"></script> -->
+    
