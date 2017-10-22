@@ -29,7 +29,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body><div id="main">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -55,19 +55,16 @@
             ?>
 
             <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username'];?><b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">
-                      <span class="glyphicon glyphicon-user"></span>Profile</a></li>
-                    <li><a href="">
-                      <span class="glyphicon glyphicon-cog"></span>Settings</a></li>
-                    <li><a href="logout.php">
-                      <span class="glyphicon glyphicon-off"></span>Log Out</a></li>
-                </li>
-              </ul>
-            </div>
+              <div class="nav navbar-nav navbar-right">
+                <span style="font-size:28px;cursor:pointer" id="loggedinuser" onclick="openNav()">&#9776; <?php echo $_SESSION['username'];?></span>
+                <div id="mySidenav" class="sidenav">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <a href="profile.php">Profile</a>
+                  <a href="#">Settings</a>
+                  <a href="logout.php">Logout</a>
+                </div>
+              </div>
+          </div>
 
             <?php
             }
@@ -123,5 +120,5 @@
     		</div>
     	</div>
     </div>
+</div>
 
-    

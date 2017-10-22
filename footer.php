@@ -1,4 +1,4 @@
- <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+ <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation" id="footer">
         <div class="navbar-text pull-left">
           <p>www.learn&earn@gmail.com</p>
         </div> 
