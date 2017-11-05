@@ -1,6 +1,11 @@
-<?php
-  session_start();
+<?php 
+    session_start();
+    $role = $_SESSION['sess_userrole'];
+    if(!isset($_SESSION['sess_username']) && $role!="user"){
+      header('Location: #login?err=2');
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,9 +55,10 @@
 
           <div class="navbar-collapse collapse">
               <div class="nav navbar-nav navbar-right">
-                <span style="font-size:28px;cursor:pointer" id="loggedinuser" onclick="openNav()">&#9776; <?php echo $_SESSION['username'];?></span>
+                <span style="font-size:28px;cursor:pointer" id="loggedinuser" onclick="openNav()">&#9776; <?php echo $_SESSION['sess_username'];?></span>
                 <div id="mySidenav" class="sidenav">
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <a href="UserAccount.php">Account</a>
                   <a href="profile.php">Profile</a>
                   <a href="#">Settings</a>
                   <a href="logout.php">Logout</a>
@@ -61,12 +67,15 @@
           </div>
       </div>
 
+
       <div class="container">
         <?php
-          echo '<span style="font-size:32pt;"> Welocme, '.$_SESSION['username'].'</span>'; 
+          echo '<span style="font-size:32pt;"> Welocme, '.$_SESSION['sess_username'].'</span>'; 
         ?>
 
         <br>You can add your personal details.
+        <br>You will able to view your details soon.
+        <br><h2>Site Is Under Development</h2>
       </div>
     
 

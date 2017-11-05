@@ -1,35 +1,37 @@
 <?php
-require 'dbconnect.php';
-session_start();
+	require 'dbconnect.php';
+	session_start();
 
-if (isset($_POST['Login']))
-{
 	$Username = $_POST['username'];
 	$Password = $_POST['password'];
 		
 	$result = $conn->query("select * from user_info where username = '$Username' AND password='$Password'");
 	$row = $result->fetch_assoc();
 
-
-	$_SESSION['username'] = $row['username'];
-	$_SESSION['password'] = $row['password'];
-
-		
-
-	if (mysqli_num_rows($result) > 0)
+	if (mysqli_num_rows($result) == 0)
 	{
-		$name=$row['username'];
-		$_SESSION['username']=$name;
-		header('Location:account.php');
+		header('Location: header.php?err=1');
 	}
 	else
 	{
-		unset($_SESSION['username']);
-		session_destroy();
-		header('Location:home.php');
-	}
-}
+		session_regenerate_id();
+		$_SESSION['sess_user_id'] = $row['id'];
+		$_SESSION['sess_username'] = $row['username'];
+        $_SESSION['sess_userrole'] = $row['role'];
+        $_SESSION['sess_password'] = $row['password'];
 
+        echo $_SESSION['sess_userrole'];
+		session_write_close();
+
+		if( $_SESSION['sess_userrole'] == "admin")
+		{
+			header('Location: AdminAccount.php');
+		}
+		else
+		{
+			header('Location: UserAccount.php');
+		}
+	}
 ?>
 
 

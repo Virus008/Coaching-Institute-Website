@@ -50,15 +50,16 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <?php 
-            if(!empty($_SESSION['username']))
+            if(!empty($_SESSION['sess_username']))
             {
             ?>
 
             <div class="navbar-collapse collapse">
               <div class="nav navbar-nav navbar-right">
-                <span style="font-size:28px;cursor:pointer" id="loggedinuser" onclick="openNav()">&#9776; <?php echo $_SESSION['username'];?></span>
+                <span style="font-size:28px;cursor:pointer" id="loggedinuser" onclick="openNav()">&#9776; <?php echo $_SESSION['sess_username'];?></span>
                 <div id="mySidenav" class="sidenav">
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <a href="UserAccount.php">Account</a>
                   <a href="profile.php">Profile</a>
                   <a href="#">Settings</a>
                   <a href="logout.php">Logout</a>
@@ -104,9 +105,26 @@
                       				<i class="glyphicon glyphicon-lock"></i> 
                     			</span>
                     			<input class="form-control" placeholder="Password" name="password" type="password" value="" required>
-                  			  </div>
+                  			  </div><br>
     						
                  				<input type="checkbox"> Remember me <br>
+<?php 
+	$errors = array(
+	1=>"Invalid user name or password, Try again",
+	2=>"Please login to access this area"
+	);
+
+	$error_id = isset($_GET['err']) ? (int)$_GET['err'] : 0;
+
+	if ($error_id == 1)
+	{
+		echo '<p class="text-danger">'.$errors[$error_id].'</p>';
+	}
+	elseif ($error_id == 2)
+	{
+		echo '<p class="text-danger">'.$errors[$error_id].'</p>';
+	}
+?>  
     						</div>
     					</div>
     				</div>
