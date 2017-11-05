@@ -191,3 +191,29 @@ span.req {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+
+/* ---------------Admin Panel-------------- */
+
+#content{
+	height:110vh;
+	/*background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../images/sunset.jpg");*/
+	background-size:cover;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	position:relative;
+	margin-top:-50px;
+}
+
+
+#content1{
+	height:110vh;
+	/*background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../images/ustad.jpg");
+	background-size:cover;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	position:relative;
+	margin-top:-50px;*/
+}
