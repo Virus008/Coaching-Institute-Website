@@ -61,7 +61,7 @@
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                   <a href="UserAccount.php">Account</a>
                   <a href="profile.php">Profile</a>
-                  <a href="#">Settings</a>
+                  <a href="UserSettings.php">Settings</a>
                   <a href="logout.php">Logout</a>
                 </div>
               </div>

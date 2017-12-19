@@ -110,12 +110,12 @@
 
     				<div class="form-group">
     					<label for="password"><span class="req">* </span>Password: </label>
-    					<input required type="password" name="password" id="pass1" class="form-control inputpass" minlength="4" maxlength="16" />
+    					<input type="password" name="password" id="pass1" class="form-control inputpass" minlength="4" maxlength="16" required/>
     				</div>
 
     				<div class="form-group">
     					<label for="password"><span class="req">* </span>Confirm Password: </label>
-    					<input required type="password" name="con_password" id="pass2" class="form-control inputpass" minlength="4" maxlength="16" onkeyup="checkPass()" />
+    					<input type="password" name="con_password" id="pass2" class="form-control inputpass" minlength="4" maxlength="16" onkeyup="checkPass()" required />
     					<span id="ConfirmMessage" class="ConfirmMessage"></span>
     				</div>
 
@@ -145,5 +145,3 @@
       include("footer.php");
     ?>
 
-<script src="js/formvalidation.js"></script>
-<script src="js/sidenav.js"></script>

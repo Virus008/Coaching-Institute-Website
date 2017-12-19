@@ -15,7 +15,7 @@
 	else
 	{
 		session_regenerate_id();
-		$_SESSION['sess_user_id'] = $row['id'];
+		$_SESSION['sess_user_id'] = $row['cust_id'];
 		$_SESSION['sess_username'] = $row['username'];
         $_SESSION['sess_userrole'] = $row['role'];
         $_SESSION['sess_password'] = $row['password'];
