@@ -3,6 +3,7 @@
     session_start();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,7 +39,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <div class="navbar-collapse collapse" id="back">
+            <div class="navbar-collapse collapse" id="demo">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="home.php">Home</a></li>
                     <li><a href="aboutus.php">About Us</a></li>

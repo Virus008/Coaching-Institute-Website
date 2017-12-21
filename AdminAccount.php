@@ -6,30 +6,40 @@
     }
 ?>
 
+<script type="text/javascript">
+	function loadDoc()
+	{
+  		var xhttp = new XMLHttpRequest();
+  		xhttp.onreadystatechange = function()
+  		{
+    		if (this.readyState == 4 && this.status == 200)
+    		{
+    			document.getElementById("demo").innerHTML = this.responseText;
+    		}
+  		};
+  		xhttp.open("POST", "usersdetails.php", true);
+  		xhttp.send();
+	}
+</script>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Admin Control Panel</title>
 
-    <!-- Bootstrap -->
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
 
-     <div class="navbar navbar-fixed-top" role="navigation">
+     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -48,37 +58,50 @@
 
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo $_SESSION['sess_username']; ?>"></a>
-            <li><a href="logout.php">Logout</a></li>   
-          </ul>
-        </div>
-    </div>
+            <?php 
+            if(!empty($_SESSION['sess_username']))
+            {
+            ?>
 
-    <section id="content">
-    </section>
-
-  <section id="content1">
-        <div class="container">
-            <div class="row" align="left">
-                <div class="col-md-3" style="background-color:red">
-                <p>Hi</p>
-            </div>
-
-            <div class="row" align="center">
-                <div class="col-md-6" style="background-color:pink">
-                  <p>Hello</p>  
+            <div class="navbar-collapse collapse">
+              <div class="nav navbar-nav navbar-right">
+                <span style="font-size:28px;cursor:pointer" id="loggedinuser" onclick="openNav()">&#9776; <?php echo $_SESSION['sess_username'];?></span>
+                <div id="mySidenav" class="sidenav">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <a href="AdminAccount.php">Account</a>
+                  <a href="AdminProfile.php">Profile</a>
+                  <a href="AdminSettings.php">Settings</a>
+                  <a href="logout.php">Logout</a>
                 </div>
-                
-            </div>
+              </div>
+          </div>
+
+            <?php
+            }
+            else{
+            
+            }
+            ?>  
+            </ul> 
         </div>
-  </section>
 
 
+    </div><br><br>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    </body>
-</html>
+<div class="container">
+	<button class="btn btn-primary" name="users_details" onclick="loadDoc()"> Show all users details </button> <br><br>
+	<p id="demo"></p>
+
+	<!-- <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" onclick="">Select user
+	 <span class="caret"></span></button>
+  	<ul class="dropdown-menu">
+    	<li><a href="#">HTML</a></li>
+    	<li><a href="#">CSS</a></li>
+    	<li><a href="#">JavaScript</a></li>
+  	</ul> -->
+</div>
+
+<?php
+include('footer.php');
+?>

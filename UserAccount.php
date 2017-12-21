@@ -73,8 +73,8 @@
           echo '<span style="font-size:32pt;"> Welocme, '.$_SESSION['sess_username'].'</span>'; 
         ?>
 
-        <br>You can add your personal details.
         <br>You will able to view your details soon.
+        <br><b>You can change your password with the help of Settings.</b>
         <br><h2>Site Is Under Development</h2>
       </div>
     
@@ -83,4 +83,3 @@
         include("footer.php");
       ?>
 
-<script src="js/sidenav.js"></script>
